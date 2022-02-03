@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    tid-backend:
+        build:
+            context: "./backend"
+        ports:
+            - "7676:7676"
+        restart: unless-stopped
+        environment:
+            - DB=tid-db
+            - DBUSER=bob
+            - DBPASS=bob2
+    tid-db:
+        image: mysql
+        volumes:
+            - ./mysql:/var/lib/mysql
