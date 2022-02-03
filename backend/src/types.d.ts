@@ -7,7 +7,7 @@ interface queryParams {
 }
 
 interface dbService<T> {
-    getOne(): Promise<T>;
+    getAll(): Promise<T>;
     getFromFilter(f: filter[]): T[];
     castToType(ut: any): T;
 }

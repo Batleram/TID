@@ -8,7 +8,7 @@ export class thingService implements dbService<thing> {
         this.table = "thing";
     }
 
-    getOne = async () => {
+    getAll = async () => {
         const sql = {
             username: process.env.DBUSER,
             password: process.env.DBPASS,
