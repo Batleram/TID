@@ -9,21 +9,27 @@ services:
             - "7676:7676"
         restart: unless-stopped
         environment:
-            - DB=tid-db
-            - DBUSER=bob
-            - DBPASS=bob2
+            - DBHOST=tid-db
+            - DB=tid
+            - DBUSER=${DBUSER}
+            - DBPASS=${DBPASS}
     tid-frontend:
         container_name: tid-frontend
         build:
             context: "./frontend"
         ports:
             - "5001:8080"
-        restart: unless-stopped
     tid-db:
         container_name: tid-db
         image: mysql
         volumes:
             - ./mysql:/var/lib/mysql
+            - ./mariadb-init.sql:/docker-entrypoint-initdb.d/1.sql
+        environment:
+            - MYSQL_DATABASE=tid
+            - MYSQL_ROOT_PASSWORD=${ROOTPASS}
+            - MYSQL_USER=${DBUSER}
+            - MYSQL_PASSWORD=${DBPASS}
 
 networks:
     default:

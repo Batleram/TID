@@ -1,9 +1,14 @@
-require("custom-env").env("jeraya", process.cwd() + "/env/");
-import "./types.d.ts";
-import mysql from "mysql";
+import mysql, { QueryError } from "mysql2";
+require("dotenv").config();
 const host = process.env.DBHOST;
 
-const query = ({ username, password, db, query, data }: queryParams) => {
+const query = ({
+    username,
+    password,
+    db,
+    query,
+    data,
+}: queryParams): Promise<unknown[]> => {
     return new Promise((resolve, reject) => {
         if (username && password && db && query && data) {
             let con = mysql.createConnection({
@@ -12,12 +17,12 @@ const query = ({ username, password, db, query, data }: queryParams) => {
                 password: password,
                 database: db,
             });
-            con.connect((err: any) => {
+            con.connect((err: QueryError) => {
                 if (err) {
                     con.destroy();
                     return reject(err);
                 }
-                con.query(query, data, (err: any, result: any) => {
+                con.query(query, data, (err: QueryError, result: any[]) => {
                     if (err) {
                         con.destroy();
                         return reject(err);
@@ -28,7 +33,7 @@ const query = ({ username, password, db, query, data }: queryParams) => {
                 });
             });
         } else {
-            return reject("Not all information for the query was send");
+            return reject("Not all information for the query was sent");
         }
     });
 };
