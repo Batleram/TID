@@ -15,10 +15,10 @@ services:
             - DBPASS=${DBPASS}
     tid-frontend:
         container_name: tid-frontend
+        volumes:
+            - ./frontend/dist:/srv/dist
         build:
             context: "./frontend"
-        ports:
-            - "5001:8080"
     tid-db:
         container_name: tid-db
         image: mysql
@@ -30,6 +30,14 @@ services:
             - MYSQL_ROOT_PASSWORD=${ROOTPASS}
             - MYSQL_USER=${DBUSER}
             - MYSQL_PASSWORD=${DBPASS}
+    tid-webserver:
+        container_name: tid-nginx
+        image: nginx
+        ports:
+            - "5001:80"
+        volumes:
+            - ./default-nginx.conf:/etc/nginx/conf.d/default.conf
+            - ./frontend/dist/:/usr/share/nginx/html/
 
 networks:
     default:
