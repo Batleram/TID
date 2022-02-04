@@ -2,6 +2,7 @@ version: "3"
 
 services:
     tid-backend:
+        container_name: tid-backend
         build:
             context: "./backend"
         ports:
@@ -11,7 +12,20 @@ services:
             - DB=tid-db
             - DBUSER=bob
             - DBPASS=bob2
+    tid-frontend:
+        container_name: tid-frontend
+        build:
+            context: "./frontend"
+        ports:
+            - "5001:8080"
+        restart: unless-stopped
     tid-db:
+        container_name: tid-db
         image: mysql
         volumes:
             - ./mysql:/var/lib/mysql
+
+networks:
+    default:
+        external: false
+        name: "tid-network"
