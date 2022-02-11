@@ -103,12 +103,12 @@ The only two prerequisites are as follows:
 
 ### Installation
 1. Clone the repo
-```sh
-   git clone https://github.com/Batleram/TID.git
-   cd TID
+```
+git clone https://github.com/Batleram/TID.git
+cd TID
 ```
 2. Create a `.env` file with the following content
-```env
+```
 ROOTPASS=<sustitute for a db root password>
 DBUSER=<sustitute for a db username>
 DBPASS=<sustitute for a db user password>
