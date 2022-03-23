@@ -6,4 +6,12 @@ CREATE TABLE `things` (
 	PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `usres` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(255) NOT NULL,
+	`username`  VARCHAR(255) NOT NULL,
+    `passwordHash` VARCHAR(255) NOT NULL
+	PRIMARY KEY (`id`)
+);
+
 insert into `things` (id, date, thing, done) values (null, now(), "Setup the database engine", true);

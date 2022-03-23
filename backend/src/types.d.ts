@@ -1,4 +1,4 @@
-interface queryParams {
+interface QueryParams {
     username: string;
     password: string;
     db: string;
@@ -6,17 +6,24 @@ interface queryParams {
     data: any;
 }
 
-interface dbService<T> {
+interface DbService<T> {
     getAll(): Promise<T[]>;
-    getFromFilter(f: filter[]): T[];
+    getFromFilter(filters: Filter[]): Promise<T[]>;
 }
 
-interface filter {
+interface Filter {
     type: string;
     func: string;
     value: string;
 }
 
-type thing = {
+type Thing = {
     temp: string;
 };
+
+type User = {
+    id: number,
+    username: string;
+    email: string;
+    passwordHash: string
+}

@@ -8,7 +8,7 @@ const query = ({
     db,
     query,
     data,
-}: queryParams): Promise<unknown[]> => {
+}: QueryParams): Promise<unknown[]> => {
     return new Promise((resolve, reject) => {
         if (username && password && db && query && data) {
             let con = mysql.createConnection({
