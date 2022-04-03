@@ -1,21 +1,19 @@
 import mysql, { QueryError } from "mysql2";
+import { databaseName } from "../constants"
 require("dotenv").config();
 const host = process.env.DBHOST;
 
-const query = ({
-    username,
-    password,
-    db,
+export const query = ({
     query,
     data,
 }: QueryParams): Promise<unknown[]> => {
     return new Promise((resolve, reject) => {
-        if (username && password && db && query && data) {
+        if (query && data) {
             let con = mysql.createConnection({
                 host: host,
-                user: username,
-                password: password,
-                database: db,
+                user: process.env.USERNAME,
+                password: process.env.PASSWORD,
+                database: databaseName
             });
             con.connect((err: QueryError) => {
                 if (err) {
@@ -37,5 +35,3 @@ const query = ({
         }
     });
 };
-
-export default query;

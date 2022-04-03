@@ -1,7 +1,7 @@
 import jwt, { JsonWebTokenError, VerifyOptions, Jwt } from "jsonwebtoken";
 require("dotenv").config()
 
-export class JWTWrapper {
+export class JWTService {
     private privKey: string;
     token: string;
     options: any;
