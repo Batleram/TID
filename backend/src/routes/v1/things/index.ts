@@ -1,7 +1,10 @@
 const express = require("express"), router = express.Router();
+import { thingsGET } from "../../../controllers";
 
-router.get("/", (req, res) => {
-    res.send('UNIMPLEMENTED: get all things').status(200)
+router.get("/", thingsGET)
+
+router.get("/:id", (req, res) => {
+    res.send('UNIMPLEMENTED: get one things').status(200)
 })
 
 router.post("/", (req, res) => {

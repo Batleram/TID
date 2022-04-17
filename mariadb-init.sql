@@ -6,7 +6,7 @@ CREATE TABLE `things` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `usres` (
+CREATE TABLE `users` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`email` VARCHAR(255) NOT NULL,
 	`username`  VARCHAR(255) NOT NULL,

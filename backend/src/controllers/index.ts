@@ -1,0 +1,1 @@
+export { thingsGET } from "./ThingsController"

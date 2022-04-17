@@ -1,2 +1,1 @@
-export { thingsRouter } from "./things"
-export { usersRouter } from "./users"
+export { v1Router } from "./v1"

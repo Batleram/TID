@@ -1,1 +1,2 @@
-export { JWTService } from "./JWTService"
+export { getAllThings, getThingsFromFilter } from "./ThingService"
+export { getAllUsers, getUsersFromFilter } from "./UserService"

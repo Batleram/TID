@@ -1,3 +1,7 @@
 type Thing = {
-    temp: string;
+    action: string,
+    completed: boolean
+    note?: string
+    date?: Date
+    minutesToComplete?: number
 };

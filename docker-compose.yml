@@ -5,8 +5,6 @@ services:
         container_name: tid-backend
         build:
             context: "./backend"
-        ports:
-            - "7676:7676"
         restart: unless-stopped
         environment:
             - DBHOST=tid-db
